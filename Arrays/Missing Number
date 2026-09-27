@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int n = nums.size() ;
+
+        //M1:-                               //TC=O(nlogn) 
+        // sort(nums.begin(),nums.end()) ;
+        // for(int i = 0 ; i<n ; i++){
+        //     if(nums[i]!=i) return i;
+        // }
+        // return n ;
+
+
+        //M2:-                              //TC=O(n)
+        // int arrsum = 0 ;
+        // int ZeroTonSum = (n*(n+1))/2 ;
+        // for(int i=0 ; i<n ; i++){
+        //     arrsum += nums[i] ;
+        // }
+        // return (ZeroTonSum-arrsum) ;
+
+        //M3:-                             //TC=O(n) , AS=O(n)
+        vector<bool> flag(n+1 , false) ;
+        for(int i=0 ; i<n ; i++){
+            flag[nums[i]] = true ;
+        }
+        for(int i=0 ; i<n ; i++){
+            if(flag[i]==false) return i ;
+        }
+        return n;
+    }
+};
