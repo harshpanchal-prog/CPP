@@ -1,0 +1,29 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& arr) {
+        vector<bool> row(arr.size(),false) ;
+        vector<bool> col(arr[0].size(),false) ;
+        for(int i=0 ; i<arr.size() ; i++){
+            for(int j=0 ; j<arr[0].size() ; j++){
+                if(arr[i][j]==0){
+                    row[i] = true ;
+                    col[j] = true ;
+                }
+            }
+        }
+        for(int i=0 ; i<row.size() ; i++){
+            if(row[i]==true) {
+                for(int j=0 ; j<arr[0].size() ; j++){
+                    arr[i][j] = 0 ;
+                }
+            }
+        }
+        for(int i=0 ; i<col.size() ; i++){
+            if(col[i]==true) {
+                for(int j=0 ; j<arr.size() ; j++){
+                    arr[j][i] = 0 ;
+                }
+            }
+        }
+    }
+};
