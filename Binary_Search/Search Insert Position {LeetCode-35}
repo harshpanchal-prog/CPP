@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int searchInsert(vector<int>& arr, int tar) {
+        int n=arr.size() ;
+        if(tar<arr[0]) return 0;
+        if(tar>arr[n-1]) return n ;
+        int lo=0 , hi=n-1 ;
+        while(lo <= hi){              //TC=O(logn)
+            int mid = (lo+hi)/2 ;
+            if(arr[mid]==tar) return mid ;
+            else if(arr[mid]>tar) hi=mid-1 ;
+            else lo=mid+1 ;
+        }
+        return lo ;
+    }
+};
