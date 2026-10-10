@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int maxArea(vector<int>& arr) {
+        int n=arr.size() ;
+        int mxarea=0 ;
+        int i=0,j=n-1 ;
+        while(i<j){
+            int area=((min(arr[i],arr[j]))*(j-i)) ;
+            if( area>mxarea ) mxarea=area ;
+            
+            if(arr[i]<arr[j]) i++ ;
+            else j-- ;
+        }
+        return mxarea ;
+    }
+};
