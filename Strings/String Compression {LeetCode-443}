@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int compress(vector<char>& s) {
+        string ans ;
+        int n = s.size() ;
+        int i=0,j=0 ;
+        while(j<n){
+            if(s[j]==s[i]) j++ ;
+            else{
+                int num=j-i ;
+                ans.push_back(s[i]);
+                if(num!=1) ans+=to_string(num) ;
+                i=j ;
+            }
+        }
+        int num=j-i ;
+        ans.push_back(s[i]);
+        if(num!=1) ans+=to_string(num) ;
+        
+        vector<char> ans2(ans.length()) ;
+        for(int i=0 ; i<ans.length() ; i++){
+            ans2[i]=ans[i] ;
+        }
+        s = ans2 ;
+        return s.size() ;
+    }
+};
