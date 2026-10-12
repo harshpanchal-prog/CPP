@@ -1,0 +1,41 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n = s.length() ;
+        int i=0,j=0 ;
+        while(j<n){
+            if(s[j]!=' ') j++ ;
+            else{
+                int x=i,y=j-1 ;
+                while(x<y){
+                    swap(s[x],s[y]) ;
+                    x++ ;
+                    y-- ;
+                }
+                while(s[j]==' ' && j<n) j++ ;
+                i=j ;
+            }
+        }
+
+        int x=i,y=j-1 ;
+        while(x<y){
+            swap(s[x],s[y]) ;
+            x++ ;
+            y-- ;
+        }
+        reverse(s.begin(),s.end()) ;
+        //now dealing with extar spaces :-
+        string ans="" ;
+        int k=0 ;
+        while(k<n){
+            while(k<n && s[k]==' ') k++ ;
+            if(k==n) break;
+            if(ans.length()>0) ans+=' ' ;
+            while(k<n && s[k]!=' '){
+                ans += s[k] ;
+                k++ ;
+            }
+        }
+        return ans ;
+    }
+};
