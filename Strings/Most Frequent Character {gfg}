@@ -1,0 +1,20 @@
+class Solution {
+  public:
+    char getMaxOccuringChar(string& s) {
+        vector<int> freq(26,0) ;
+        int n = s.length() ;
+        for(int i=0 ; i<n ; i++){
+            int ind = s[i] - 97 ;
+            freq[ind]++ ;
+        }
+        int maxfreq = 0 ;
+        for(int i=0 ; i<26 ; i++){
+            if(freq[i]>maxfreq) maxfreq=freq[i] ;
+        }
+        for(int i=0 ; i<26 ; i++){
+            if(freq[i]==maxfreq) return (char)(i+97) ;
+        }
+        return s[0] ;
+        
+    }
+};
