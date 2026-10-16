@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int binsrch(int lo , int hi , int tar , vector<int>& arr){
+        if(lo>hi) return -1 ;
+        int mid = (lo+hi)/2 ;
+        if(arr[mid]==tar) return mid ;
+        else if(arr[mid]>tar) return binsrch(lo,mid-1,tar,arr) ;
+        else return binsrch(mid+1,hi,tar,arr) ;
+    }
+    int search(vector<int>& arr, int tar) {
+        int n = arr.size();
+        return binsrch(0,n-1,tar,arr) ;
+    }
+};
+
+//old method:-
+
+// class Solution {
+// public:
+//     int search(vector<int>& arr, int tar) {
+//         int n=arr.size() ;
+//         int lo=0 , hi=n-1 ;
+//         while(lo <= hi){              //TC=O(logn)
+//             int mid = (lo+hi)/2 ;
+//             if(arr[mid]==tar) return mid ;
+//             else if(arr[mid]>tar) hi=mid-1 ;
+//             else lo=mid+1 ;
+//         }
+//         return -1 ;
+//     }
+// };
