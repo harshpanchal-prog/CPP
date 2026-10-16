@@ -1,0 +1,18 @@
+class Solution {
+public:
+    void powerSet(int ind , vector<int> ans ,vector<int>& arr , vector<vector<int>>& finalAns){
+        if(ind==arr.size()){
+            finalAns.push_back(ans);
+            return;
+        }
+        powerSet(ind+1,ans,arr,finalAns) ;      //skip
+        ans.push_back(arr[ind]) ;
+        powerSet(ind+1,ans,arr,finalAns) ;      //pick
+    }
+    vector<vector<int>> subsets(vector<int>& arr) {
+        vector<int> ans ;
+        vector<vector<int>> finalAns ;
+        powerSet(0,ans,arr,finalAns) ;
+        return finalAns ;
+    }
+};
